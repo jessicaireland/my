@@ -14,15 +14,6 @@ h1{
   border:  solid 1px rgb(18, 207, 18);
 }
 
-.header-logo{
-  height: 100px;
-  width: 80px;
-  padding: 50px;
-  margin: 10px;
-  border-radius: 50%;
-}
-
-
 .main-page{
   display: flex;
   flex-direction: row;
@@ -53,7 +44,7 @@ ul{
   border-left: solid 1px rgb(18, 207, 18);
 }
 
-li{
+li, p{
   padding: 1em;
 
 }
