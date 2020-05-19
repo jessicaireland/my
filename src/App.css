@@ -8,7 +8,10 @@
 h1{
   color: rgb(18, 207, 18);
   text-align: center;
-  border: solid 1px rgb(18, 207, 18);
+  
+}
+.header{
+  border:  solid 1px rgb(18, 207, 18);
 }
 
 .main-page{
@@ -21,6 +24,11 @@ h1{
   list-style-type: none;
   padding: 1em;
   margin-left: 2em;
+}
+
+.avatar-1{
+  max-height: 45px;
+  max-width: 45px;
 }
 
 h3{
@@ -36,7 +44,7 @@ ul{
   border-left: solid 1px rgb(18, 207, 18);
 }
 
-li{
+li, p{
   padding: 1em;
 
 }
