@@ -69,6 +69,7 @@ class App extends React.Component{
     return(
       <>
       <Header />
+      <div className="main-style">
       <main className="main-page">
         {this.state.user.map((user, index)=>(
        <SideBar user={user} key={index}  />
@@ -78,7 +79,7 @@ class App extends React.Component{
       </main>
       <div className="main-list">
         <h3>Starting Tasks</h3>
-          <ul>
+          <ul className="todo-ul">
             {this.state.toDoList.map((title, index) =>(
               <ToDoMain title={title} key={index}  
               deleteEvent={this.deleteTodo.bind(this.description)}/>
@@ -87,10 +88,12 @@ class App extends React.Component{
          </ul>
              
          <div>
-            <input type="text" 
+            <input className="add-input"
+              type="text" 
               value={this.state.newTask} 
               onChange={this.handleInputChange}></input>
             <button onClick={this.handleAddNewTask}  type="button" className="btn-add"  >Add To List</button></div>
+         </div>
          </div>
              
       </>
