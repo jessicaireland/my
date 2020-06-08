@@ -15,7 +15,7 @@ class App extends React.Component{
             avatarImage: require("./images/myAvatar.png"),
            }
         ],
-        toDoLists: [
+        toDoList: [
           {
             id: 1, 
               title: "Make Doctors Appointment",
@@ -42,36 +42,50 @@ class App extends React.Component{
             },   
            
         ],
-       newTask: ""   
+       newTask: "",   
       };
+
+      
+    
       handleInputChange = (event) => {
         this.setState({newTask: event.target.value});
-      }
+      };
       handleAddNewTask = () => {
         let newTaskObj = {
-          name: this.state.newTask
+          description: this.state.newTask
         }
         this.setState({
-          toDoLists: [...this.state.toDoLists, newTaskObj],
+          toDoList: [...this.state.toDoList, newTaskObj],
           newTask: ""
         });
       };
+      deleteTodo = (index, event) => {
+        const toDoList = Object.assign([], this.state.toDoList);
+        toDoList.splice(index, 1);
+        this.setState({toDoList:toDoList});
+      }
     
   render() {
     return(
       <>
       <Header />
       <main className="main-page">
-      <SideBar  user={this.state.user}/>  
+        {this.state.user.map((user, index)=>(
+       <SideBar user={user} key={index}  />
+      ))}
+      
+             
       </main>
       <div className="main-list">
         <h3>Starting Tasks</h3>
           <ul>
-            {this.state.toDoLists.map((item, index) =>(
-         
-            <ToDoMain item={item} key={index}  />
-            ))}
+            {this.state.toDoList.map((title, index) =>(
+              <ToDoMain title={title} key={index}  
+              deleteEvent={this.deleteTodo.bind(this.description)}/>
+              ))}
+              
          </ul>
+             
          <div>
             <input type="text" 
               value={this.state.newTask} 
