@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+// import Clock from "./components/Dashboard"
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    {/* <Dashboard /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

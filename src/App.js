@@ -3,9 +3,9 @@ import './App.css';
 import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import ToDoMain from "./components/ToDoMain";
+// import Clock from "./components/Dashboard";
 
-
-
+const TODO_KEY = "mytodo_app"
 class App extends React.Component{
 
     state = {
@@ -42,9 +42,23 @@ class App extends React.Component{
             },   
            
         ],
-       newTask: "",   
+       newTask: "",  
+      
       };
 
+      componentDidMount() {
+        this.handleAddNewTask();
+        const todoString = localStorage.getItem(TODO_KEY)
+        if (todoString){
+          this.setState({toDoList: JSON.parse(todoString) })
+        }
+      }
+
+      componentDidUpdate(prevProps, prevState) {
+        if(prevState.toDoList !== this.state.toDoList){
+        localStorage.setItem(TODO_KEY, JSON.stringify(this.state.toDoList) )
+      }
+    }
       
     
       handleInputChange = (event) => {
@@ -92,7 +106,10 @@ class App extends React.Component{
               type="text" 
               value={this.state.newTask} 
               onChange={this.handleInputChange}></input>
-            <button onClick={this.handleAddNewTask}  type="button" className="btn-add"  >Add To List</button></div>
+            <button 
+            onClick={this.handleAddNewTask}  
+            type="button" 
+            className="btn-add"  >Add To List</button></div>
          </div>
          </div>
              
