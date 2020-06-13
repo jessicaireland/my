@@ -18,25 +18,21 @@ class App extends React.Component{
         toDoList: [
           {
             id: 1, 
-              title: "Make Doctors Appointment",
               description: "Call Dr",
               completed: false
             },
             {
               id: 2,
-              title: "Make List of Girl Names",
               description: "List of girl names",
               completed: false
             },
             {
               id: 3,
-              title: "Make List of Boy Names",
               description: "List of boy names",
               completed: false
             },
             {
               id: 4,
-              title: "Make List of Baby Things Needed",
               description: "what are the things needed for baby",
               completed: false
             },   
@@ -59,10 +55,15 @@ class App extends React.Component{
           newTask: ""
         });
       };
-      deleteTodo = (index, event) => {
-        const toDoList = Object.assign([], this.state.toDoList);
-        toDoList.splice(index, 1);
-        this.setState({toDoList:toDoList});
+      handleDelete = id => {
+
+        const filterId = this.state.toDoList.filter((toDoList) => toDoList.id !== id);
+        this.setState({toDoList:filterId});
+        
+        // this.setState((state) => {
+        //   const filterList = state.toDoList.id.filter(item => item.id !== this.id);
+        //   this.setState ({toDoList: filterList})
+        // });
       }
     
   render() {
@@ -80,9 +81,9 @@ class App extends React.Component{
       <div className="main-list">
         <h3>Starting Tasks</h3>
           <ul className="todo-ul">
-            {this.state.toDoList.map((title, index) =>(
-              <ToDoMain title={title} key={index}  
-              deleteEvent={this.deleteTodo.bind(this.description)}/>
+            {this.state.toDoList.map((item, index) =>(
+              <ToDoMain item={item} key={index}  
+              onDelete={this.handleDelete}/>
               ))}
               
          </ul>
