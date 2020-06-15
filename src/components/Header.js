@@ -1,4 +1,5 @@
 import React from "react";
+import {withRouter} from "react-router-dom"
 
 function Header(props) {
     return(
@@ -9,4 +10,4 @@ function Header(props) {
     );
 }
 
-export default Header;
+export default withRouter(Header);

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import{withRouter} from "react-router-dom";
 
 class Clock extends Component {
     constructor(props) {
@@ -36,4 +36,4 @@ render(){
 }
 }
 
-export default Clock;
+export default withRouter(Clock);

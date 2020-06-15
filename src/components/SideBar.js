@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -11,11 +12,10 @@ function SideBar (props) {
        <img src={props.user.avatarImage} className="avatar-1" alt=""/>
        <h3>{props.user.name}</h3>
        
-        <li>Lists</li>
-        <li>Calendar</li>
-        <li>Planner</li>
-        <li>Reminders</li>
-        <li>Contacts</li>
+        <li><Link to="/">Dashboard</Link></li>
+        <li><Link to="/todolist">Lists</Link></li>
+        <li><Link to="">Pictures</Link></li>
+       
     
      </ul>
     
