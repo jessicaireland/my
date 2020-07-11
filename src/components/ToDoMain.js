@@ -9,13 +9,23 @@ function ToDoMain(props){
         //    {props.item.description} 
         //    <i className="far fa-trash-alt" onClick= {()=> props.onDelete(props.item.id)}></i> </p>
         // </li>
-        <li className="li-todo"> <input type="checkbox"/>
+        <li style={styles.liTodo}> <input type="checkbox"/>
            <div onClick={() =>props.history.push("/todolist/" + props.item.description)}>
             {props.item.description}</div>
             <i className="far fa-trash-alt" onClick= {()=> props.onDelete(props.item.id)}></i>
         </li>
     )
 }
+
+const styles = {
+    liTodo:{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'spaceBetween',
+        alignItems: 'center',
+        padding: '0.5em',
+    },
+};
 
 
     

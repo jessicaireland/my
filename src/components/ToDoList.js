@@ -86,23 +86,23 @@ class ToDoList extends React.Component{
              </Route>
              <Route path="/todolist">
               <Header />
-          <div className="main-style">
-          <main className="main-page">
+          <div style={styles.mainStyle}>
+          <main>
             {this.state.user.map((user, index)=>(
               <SideBar user={user} key={index}  />
               ))} 
               </main>
-                 <div className="main-list">
+                 <div style={styles.mainList}>
                   <h3>Starting Tasks</h3>
                   <ul className="todo-ul">
                     {this.state.toDoList.map((item, index) =>(
-                  <ToDoMain item={item} key={index}  
+                  <ToDoMain item={item} key={index.id}  
                     onDelete={this.handleDelete}/>
                       ))} 
                        
                   </ul> 
                   <div>
-                    <input className="add-input"
+                    <input style={styles.addInput}
                     type="text" 
                     value={this.state.newTask} 
                     onChange={this.handleInputChange}></input>
@@ -119,6 +119,43 @@ class ToDoList extends React.Component{
           );
       }    
     }
+
+    const styles = {
+      mainStyle:{
+        display: 'flex',
+        flexDirection: 'row',
+      },
+
+      mainList:{
+        borderLeft: 'solid 1px rgb(18, 207, 18)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'spaceBetween',
+        alignItems: 'center',
+      },
+
+      todoUl:{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'spaceBetween',
+        alignItems: 'center',
+      },
+
+      addInput:{
+        padding: 10,
+        margin: '2em',
+      },
+
+      addButton:{
+        backgroundColor: '173, 238, 173',
+        color: 'black',
+        border: '1px solid rgb(18, 207, 18)',
+        padding: '1em',
+        margin: '3em',
+      },
+
+      
+    };
 
 
 
