@@ -40,7 +40,7 @@ render(){
 }
 const styles ={
     clockStyle:{
-  backgroundColor: 'rgba(86,207,233,100)',    
+  backgroundImage:' url("https://st2.depositphotos.com/1187791/8866/i/950/depositphotos_88660944-stock-photo-pink-sakura-blossom-bright-spring.jpg")',   
   backgroundAttachment: 'fixed',
   backgroundSize:' cover',
   display: 'flex',
