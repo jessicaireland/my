@@ -6,10 +6,11 @@ function ToDoMain(props){
     return(
         
        
-        <StyledLi> <StyledInput type="checkbox" />
+        <StyledLi> 
+            <input type = "checkbox"></input>
            <div onClick={() =>props.history.push("/todolist/" + props.item.description)}>
             {props.item.description}</div>
-            <i className="far fa-trash-alt" onClick= {()=> props.onDelete(props.item.id)}></i>
+            <i className="far fa-trash-alt" onClick= {()=> props.deleteItem(props.id)}></i>
         </StyledLi>
     )
     
@@ -29,7 +30,6 @@ const StyledLi = styled.li `
     align-items: center;
     padding: 0.5em;
 `
-const StyledInput = styled.input `
-    text-decoration: ${props=> (props.completed ? 'line-through' : "")}
 
-`
+
+// onClick= {()=> props.onDelete(props.item.id)}></i>

@@ -13,7 +13,7 @@ function SideBar (props) {
        <h3 style={styles.nameStyle}>{props.user.name}</h3>
        
         <li style={styles.linkStyleNav}><Link to="/">Dashboard</Link></li>
-        <li style={styles.linkStyleNav} ><Link to="/todolist">Lists</Link></li>
+        
         
        
     
@@ -41,14 +41,14 @@ const styles ={
 
   navBarSide: {
     listStyleType: 'none',
-    padding: 2,
-    marginLeft: 2,
+    padding: 1,
+    marginLeft: 1,
   },
 
   linkStyleNav:{
     // backgroundColor: "rgb(24, 44, 87)",
     color: 'white',
-    padding: 3,
+    padding: 1,
     textDecoration: 'none',
     textTransform: 'uppercase',
   },

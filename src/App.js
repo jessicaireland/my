@@ -4,7 +4,7 @@ import {Route, Switch, Link, withRouter} from "react-router-dom";
 
 import ToDoList from "./components/ToDoList";
 import Clock from "./components/Dashboard";
-import Contact from "./components/Contact";
+
 
 ;
 
@@ -25,7 +25,7 @@ class App extends React.Component{
       </Route>
       <Route path="/todolist" component={ToDoList}>
         <ToDoList /> 
-        <Contact />    
+           
       </Route>
       </Switch>
       </>

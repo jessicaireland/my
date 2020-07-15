@@ -59,6 +59,7 @@ class ToDoList extends React.Component{
         localStorage.setItem(TODO_KEY, JSON.stringify(this.state.toDoList) )
       }
     }
+    
       
     
       handleInputChange = (event) => {
@@ -74,10 +75,13 @@ class ToDoList extends React.Component{
         });
       };
       handleDelete = id => {
-        const filterId = this.state.toDoList.filter((toDoList) => toDoList.id !== id);
+        const filterId = this.state.toDolist.filter((toDoList) => toDoList.id !== id);
         this.setState({toDoList:filterId});
       }
-      
+      handleCheckboxChange = (event) => {
+        const value = event.target.type ==="checkbox"? event.target.checked : event.target.value
+        this.setState({ completed: value })
+      }
       render() {
           return(
            <>
@@ -97,9 +101,14 @@ class ToDoList extends React.Component{
                   <h3>Starting Tasks</h3>
                   <ToDoUl>
                     {this.state.toDoList.map((item, index) =>(
-                  <ToDoMain item={item} key={index.id}  
-                    onDelete={this.handleDelete}/>
-                      ))} 
+                  <ToDoMain item={item} key={index.id} 
+                   
+                    deleteItem={this.handleDelete}/>
+                    ))} 
+                    <input  value={this.state.completed}  
+                    name="completed"  
+                    type="checkbox"
+                    onChange={this.handleCheckboxChange} />
                        
                   </ToDoUl> 
             
@@ -165,3 +174,4 @@ class ToDoList extends React.Component{
 
 
 export default withRouter(ToDoList)
+

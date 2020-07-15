@@ -40,7 +40,8 @@ render(){
 }
 const styles ={
     clockStyle:{
-  backgroundImage:' url("https://st2.depositphotos.com/1187791/8866/i/950/depositphotos_88660944-stock-photo-pink-sakura-blossom-bright-spring.jpg")',   
+    
+  backgroundImage:' url("https://st2.depositphotos.com/1187791/8866/i/950/depositphotos_88660944-stock-photo-pink-sakura-blossom-bright-spring.jpg")',
   backgroundAttachment: 'fixed',
   backgroundSize:' cover',
   display: 'flex',
@@ -48,6 +49,8 @@ const styles ={
   alignItems: 'center',
   width: 400,
   height: 800,
+  
+
   },
   titleStyle:{
       padding: 150,
