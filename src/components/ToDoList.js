@@ -4,6 +4,7 @@ import Header from "./Header";
 import SideBar from "./SideBar";
 import ToDoDetail from "./ToDoDetail";
 import {withRouter, Switch, Route} from "react-router-dom";
+import styled from 'styled-components';
 
 const TODO_KEY = "mytodo_app"
 class ToDoList extends React.Component{
@@ -11,7 +12,7 @@ class ToDoList extends React.Component{
       user: [
         { 
           name: "Sally Lou",
-         avatarImage: require("/Users/jessicaireland/workspace/my/my/src/images/myAvatar.png"),
+         avatarImage: "./images.myAvatar.png",
         }
      ],
         toDoList: [
@@ -58,6 +59,7 @@ class ToDoList extends React.Component{
         localStorage.setItem(TODO_KEY, JSON.stringify(this.state.toDoList) )
       }
     }
+    
       
     
       handleInputChange = (event) => {
@@ -73,10 +75,13 @@ class ToDoList extends React.Component{
         });
       };
       handleDelete = id => {
-        const filterId = this.state.toDoList.filter((toDoList) => toDoList.id !== id);
+        const filterId = this.state.toDolist.filter((toDoList) => toDoList.id !== id);
         this.setState({toDoList:filterId});
       }
-      
+      handleCheckboxChange = (event) => {
+        const value = event.target.type ==="checkbox"? event.target.checked : event.target.value
+        this.setState({ completed: value })
+      }
       render() {
           return(
            <>
@@ -86,33 +91,38 @@ class ToDoList extends React.Component{
              </Route>
              <Route path="/todolist">
               <Header />
-          <div style={styles.mainStyle}>
+          <MainStyle>
           <main>
             {this.state.user.map((user, index)=>(
               <SideBar user={user} key={index}  />
               ))} 
               </main>
-                 <div style={styles.mainList}>
+                 <MainList>
                   <h3>Starting Tasks</h3>
-                  <ul className="todo-ul">
+                  <ToDoUl>
                     {this.state.toDoList.map((item, index) =>(
-                  <ToDoMain item={item} key={index.id}  
-                    onDelete={this.handleDelete}/>
-                      ))} 
+                  <ToDoMain item={item} key={index.id} 
+                   
+                    deleteItem={this.handleDelete}/>
+                    ))} 
+                    <input  value={this.state.completed}  
+                    name="completed"  
+                    type="checkbox"
+                    onChange={this.handleCheckboxChange} />
                        
-                  </ul> 
-                  <div>
-                    <input style={styles.addInput}
+                  </ToDoUl> 
+            
+                    <AddInput
                     type="text" 
                     value={this.state.newTask} 
-                    onChange={this.handleInputChange}></input>
-                  <button 
+                    onChange={this.handleInputChange}></AddInput>
+                  <AddButton
                     onClick={this.handleAddNewTask}  
                     type="button" 
-                  className="btn-add"  >Add To List</button></div>
-              </div>
+                    >Add To List</AddButton>
+              </MainList>
               
-              </div>
+              </MainStyle>
               </Route>
               </Switch>
            </> 
@@ -120,44 +130,48 @@ class ToDoList extends React.Component{
       }    
     }
 
-    const styles = {
-      mainStyle:{
-        display: 'flex',
-        flexDirection: 'row',
-      },
+   
+      const MainStyle = styled.div`
+        display: flex;
+        flex-direction: row;
+      `
 
-      mainList:{
-        borderLeft: 'solid 1px rgb(18, 207, 18)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'spaceBetween',
-        alignItems: 'center',
-      },
+      const MainList = styled.div`
+        border-left: solid 1px rgb(18, 207, 18);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+        padding: 30px;
+      `
 
-      todoUl:{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'spaceBetween',
-        alignItems: 'center',
-      },
+      const ToDoUl = styled.ul`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: space-between;
+      `
 
-      addInput:{
-        padding: 10,
-        margin: '2em',
-      },
+      const AddInput = styled.input`
+        padding: 5px;
+        margin: 1em;
+      `
 
-      addButton:{
-        backgroundColor: '173, 238, 173',
-        color: 'black',
-        border: '1px solid rgb(18, 207, 18)',
-        padding: '1em',
-        margin: '3em',
-      },
+      const AddButton = styled.button`
+        background-color: rgb(173, 238, 173);,
+        color: black;
+        border: 1px solid rgb(18, 207, 18);
+        padding: 1em;
+        margin: 3em;
+      `
+      
 
       
-    };
+    
 
 
 
 
 export default withRouter(ToDoList)
+
